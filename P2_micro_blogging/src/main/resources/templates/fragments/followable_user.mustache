@@ -13,21 +13,16 @@ This is a project developed by Dr. Menik to give the students an opportunity to 
     </div>
     <div class="user-follow">
         <div class="post-actions">
-            {{#isSelf}}
-            <span class="self-indicator">This is you</span>
-            {{/isSelf}}
-            {{^isSelf}}
-                {{^isFollowed}}
-                <form method="get" action="/people/{{userId}}/follow/true">
-                    <button class="fa fa-user-plus"></button>
-                </form>
-                {{/isFollowed}}
-                {{#isFollowed}}
-                <form method="get" action="/people/{{userId}}/follow/false">
-                    <button class="fa fa-user-minus"></button>
-                </form>
-                {{/isFollowed}}
-            {{/isSelf}}
+            {{^isFollowed}}
+            <form method="get" action="/people/{{userId}}/follow/true">
+                <button class="fa fa-user-plus"></button>
+            </form>
+            {{/isFollowed}}
+            {{#isFollowed}}
+            <form method="get" action="/people/{{userId}}/follow/false">
+                <button class="fa fa-user-minus"></button>
+            </form>
+            {{/isFollowed}}
         </div>
     </div>
 </div>

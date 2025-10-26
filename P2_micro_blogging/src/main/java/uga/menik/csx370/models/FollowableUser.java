@@ -22,11 +22,6 @@ public class FollowableUser extends User {
     private final String lastActiveDate;
 
     /**
-     * Flag indicating whether the user shown is the same as the logged-in user.
-     */
-    private final boolean isSelf;
-
-    /**
      * Constructs a FollowableUser with specified details and follow status.
      *
      * @param userId           the unique identifier of the user
@@ -36,14 +31,12 @@ public class FollowableUser extends User {
      * @param isFollowed       the follow status of the user by the current session
      *                         user
      * @param lastActiveDate   the date and time that this user has last made a post.
-     * @param isSelf           whether this user represents the logged-in user.
      */
     public FollowableUser(String userId, String firstName, String lastName, String profileImageName,
-            boolean isFollowed, String lastActiveDate, boolean isSelf) {
+            boolean isFollowed, String lastActiveDate) {
         super(userId, firstName, lastName, profileImageName);
         this.isFollowed = isFollowed;
         this.lastActiveDate = lastActiveDate;
-        this.isSelf = isSelf;
     }
 
     /**
@@ -52,46 +45,15 @@ public class FollowableUser extends User {
      * @param userId           the unique identifier of the user
      * @param firstName        the first name of the user
      * @param lastName         the last name of the user
-     * @param profileImageName the name of the profile image file for the user
      * @param isFollowed       the follow status of the user by the current session
      *                         user
      * @param lastActiveDate   the date and time that this user has last made a post.
      */
-    public FollowableUser(String userId, String firstName, String lastName, String profileImageName,
-            boolean isFollowed, String lastActiveDate) {
-        this(userId, firstName, lastName, profileImageName, isFollowed, lastActiveDate, false);
-    }
-
-    /**
-     * Constructs a FollowableUser with specified details and follow status.
-     *
-     * @param userId         the unique identifier of the user
-     * @param firstName      the first name of the user
-     * @param lastName       the last name of the user
-     * @param isFollowed     the follow status of the user by the current session user
-     * @param lastActiveDate the date and time that this user has last made a post.
-     * @param isSelf         whether this user represents the logged-in user.
-     */
     public FollowableUser(String userId, String firstName, String lastName,
-            boolean isFollowed, String lastActiveDate, boolean isSelf) {
+            boolean isFollowed, String lastActiveDate) {
         super(userId, firstName, lastName);
         this.isFollowed = isFollowed;
         this.lastActiveDate = lastActiveDate;
-        this.isSelf = isSelf;
-    }
-
-    /**
-     * Constructs a FollowableUser with specified details and follow status.
-     *
-     * @param userId         the unique identifier of the user
-     * @param firstName      the first name of the user
-     * @param lastName       the last name of the user
-     * @param isFollowed     the follow status of the user by the current session user
-     * @param lastActiveDate the date and time that this user has last made a post.
-     */
-    public FollowableUser(String userId, String firstName, String lastName,
-            boolean isFollowed, String lastActiveDate) {
-        this(userId, firstName, lastName, isFollowed, lastActiveDate, false);
     }
 
     /**
@@ -109,17 +71,8 @@ public class FollowableUser extends User {
      *
      * @return the date and time that this user has last made a post.
      */
-    public String getLastActiveDate() {
+    public String isLastActiveDate() {
         return lastActiveDate;
-    }
-
-    /**
-     * Indicates whether this user is the logged-in user.
-     *
-     * @return true if this represents the logged-in user, otherwise false.
-     */
-    public boolean isSelf() {
-        return isSelf;
     }
 
 }
