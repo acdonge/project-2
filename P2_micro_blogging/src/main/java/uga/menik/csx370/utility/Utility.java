@@ -25,11 +25,11 @@ public class Utility {
     }
 
     public static List<Post> createSamplePostsListWithoutComments() {
-        User user1 = new User("1", "Seo", "Han");
-        User user2 = new User("2", "Jee", "Kim");
-        User user3 = new User("3", "Jessy", "Dibb");
-        User user4 = new User("4", "Brain", "Jacy");
-        User user5 = new User("5", "Bob", "Mark");
+        User user1 = new User("1", "John", "Doe");
+        User user2 = new User("2", "Jane", "Doe");
+        User user3 = new User("3", "Alice", "Smith");
+        User user4 = new User("4", "Bob", "Brown");
+        User user5 = new User("5", "Charlie", "Green");
         List<Post> postsWithoutComments = new ArrayList<>();
         postsWithoutComments.add(new Post("1", "Exploring Spring Boot features",
                 "Mar 07, 2024, 10:54 PM", user1, 10, 4, false, false));
