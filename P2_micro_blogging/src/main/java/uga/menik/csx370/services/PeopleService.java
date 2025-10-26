@@ -6,7 +6,15 @@ This is a project developed by Dr. Menik to give the students an opportunity to 
 package uga.menik.csx370.services;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import uga.menik.csx370.models.FollowableUser;
@@ -18,14 +26,19 @@ import uga.menik.csx370.utility.Utility;
 @Service
 public class PeopleService {
     
+    private final DataSource dataSource;
     /**
      * This function should query and return all users that 
      * are followable. The list should not contain the user 
      * with id userIdToExclude.
      */
+    public PeopleService(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     public List<FollowableUser> getFollowableUsers(String userIdToExclude) {
         // Write an SQL query to find the users that are not the current user.
-
+    
         // Run the query with a datasource.
         // See UserService.java to see how to inject DataSource instance and
         // use it to run a query.
@@ -37,7 +50,34 @@ public class PeopleService {
         // how to create a list of FollowableUsers.
 
         // Replace the following line and return the list you created.
-        return Utility.createSampleFollowableUserList();
+
+        List<FollowableUser> followableUsers = new ArrayList<>();
+        final String sql = "select * from user where userId = <> ?";
+        
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, userIdToExclude);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    FollowableUser user = new FollowableUser(
+                        rs.getString("userId"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getBoolean("isFollowed"),
+                        rs.getString("lastActiveDate")
+                    );
+                    followableUsers.add(user);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return followableUsers;
+        
     }
 
 }
