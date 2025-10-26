@@ -13,23 +13,23 @@ public class Utility {
 
     public static List<FollowableUser> createSampleFollowableUserList() {
         List<FollowableUser> followableUsers = new ArrayList<>();
-        followableUsers.add(new FollowableUser("1", "Thashaan", "Lulla",
+        followableUsers.add(new FollowableUser("1", "John", "Doe",
                 true, "Mar 07, 2024, 10:54 PM"));
-       followableUsers.add(new FollowableUser("2", "Aaryan", "Patel",
+        followableUsers.add(new FollowableUser("2", "Jane", "Doe",
                 false, "Mar 05, 2024, 11:00 AM"));
-        followableUsers.add(new FollowableUser("3", "Sanghyun", "An",
+        followableUsers.add(new FollowableUser("3", "Alice", "Smith",
                 true, "Mar 06, 2024, 09:30 AM"));
-        followableUsers.add(new FollowableUser("4", "Hyeonkeum", "Seo",
+        followableUsers.add(new FollowableUser("4", "Bob", "Brown",
                 false, "Mar 02, 2024, 08:15 PM"));
         return followableUsers;
     }
 
     public static List<Post> createSamplePostsListWithoutComments() {
-        User user1 = new User("2", "John", "Doe");
-        User user2 = new User("3", "Jane", "Doe");
-        User user3 = new User("4", "Alice", "Smith");
-        User user4 = new User("5", "Bob", "Brown");
-        User user5 = new User("6", "Charlie", "Green");
+        User user1 = new User("1", "John", "Doe");
+        User user2 = new User("2", "Jane", "Doe");
+        User user3 = new User("3", "Alice", "Smith");
+        User user4 = new User("4", "Bob", "Brown");
+        User user5 = new User("5", "Charlie", "Green");
         List<Post> postsWithoutComments = new ArrayList<>();
         postsWithoutComments.add(new Post("1", "Exploring Spring Boot features",
                 "Mar 07, 2024, 10:54 PM", user1, 10, 4, false, false));
@@ -41,11 +41,11 @@ public class Utility {
     }
 
     public static List<ExpandedPost> createSampleExpandedPostWithComments() {
-        User user1 = new User("2", "John", "Doe");
-        User user2 = new User("3", "Jane", "Doe");
-        User user3 = new User("4", "Alice", "Smith");
-        User user4 = new User("5", "Bob", "Brown");
-        User user5 = new User("6", "Charlie", "Green");
+        User user1 = new User("1", "John", "Doe");
+        User user2 = new User("2", "Jane", "Doe");
+        User user3 = new User("3", "Alice", "Smith");
+        User user4 = new User("4", "Bob", "Brown");
+        User user5 = new User("5", "Charlie", "Green");
         List<Comment> commentsForPost = new ArrayList<>();
 
         commentsForPost.add(new Comment("1", "Great insights, thanks for sharing!", 
